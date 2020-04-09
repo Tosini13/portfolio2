@@ -1,0 +1,66 @@
+body{
+    margin: 0px;
+    /* background-image: url('_external/photos/background/cosmos.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+     */
+    background-color: rgba(15, 29, 38,1);
+}
+
+.truecontent{
+    min-height: 100vh;
+    padding: 1vw;
+    padding-bottom: 4vw;
+    background-color: rgba(0,0,0,0.8);
+}
+
+a:hover, a{
+    text-decoration: none;
+}
+
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1vw 0vw 5vw 0vw;
+}
+
+.pleft{
+    padding: 1vw;
+    border-left: rgba(255,255,255,0.6) solid 2px;
+    border-radius: 10px;
+}
+
+#content{
+    width: 100%;
+    color: darkgrey;
+    /* temp 
+    border: white solid 1px;
+    */
+}
+
+#footer{
+    margin-top: auto;
+}
+
+/* ----------------------- */
+/*      SCROLLBAR          */
+/* ----------------------- */
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,0.7);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgba(15, 29, 38,1);
+    
+    
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(15, 29, 38,0.7);
+}

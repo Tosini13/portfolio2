@@ -1,0 +1,340 @@
+@import "_constants.scss";
+
+// PREREQUISITES
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  color: $gold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $gold;
+  text-decoration: none;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: $darkGold solid 1.5px;
+  border-radius: 0px;
+}
+
+body {
+  font-family: "Odibee Sans", "Times New Roman", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.7px;
+  background-color: $backgroundColor;
+  margin: 0px;
+  padding: 0px;
+  color: $gold;
+  font-size: 1.5rem;
+}
+//************************************
+//HEADER
+header {
+  display: flex;
+  width: 100%;
+  background-color: $backgroundColor;
+  top: 0;
+  right: 0;
+  width: 60px;
+  position: fixed;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  border-bottom-left-radius: 10px;
+
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  nav {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .menu {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      background: $backgroundColor;
+      right: 70px;
+      top: 0;
+      width: calc(100vw - 70px);
+      height: calc(100%-60px);
+      border-bottom-right-radius: 10px;
+      > li {
+        > a {
+          padding: 5px 10px;
+        }
+        > ul {
+          max-height: 0px;
+          -webkit-transition-property: max-height;
+          -webkit-transition-duration: 0.3s;
+          transition-property: max-height;
+          transition-duration: 0.3s;
+          > li {
+            max-height: 0px;
+            -webkit-transition: max-height 0.3s;
+            transition: max-height 0.3s;
+            > a {
+              max-height: 0px;
+              font-size: 0px;
+              -webkit-transition: max-height 0.3s, font-size 0.3s;
+              transition: max-height 0.3s, font-size 0.3s;
+              padding-left: 15px;
+            }
+          }
+        }
+        > ul.openedSub {
+          max-height: 90vh;
+          > li {
+            max-height: 90vh;
+            > a {
+              padding: 5px 10px;
+              max-height: 90vh;
+              font-size: 20px;
+              padding-left: 15px;
+            }
+          }
+        }
+      }
+      transform: translate(-150%, 0%);
+      -webkit-transition-property: transform;
+      -webkit-transition-duration: 0.5s;
+      transition-property: transform;
+      transition-duration: 0.5s;
+    }
+    .opened {
+      transform: translate(0%, 0%);
+      box-shadow: 0px 0px 10px black;
+    }
+    #hamburger {
+      display: block;
+      border: none;
+      font-size: 1.5rem;
+      width: fit-content;
+    }
+    .media {
+      width: fit-content;
+      padding: 10px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    a {
+      display: block;
+    }
+    .current {
+      // border-bottom: $darkGold solid 1px;
+    }
+    & > ul {
+      text-transform: uppercase;
+    }
+  }
+}
+
+//************************************
+// MAIN
+main {
+  min-height: 100vh;
+  max-width: 980px;
+  margin: 0px auto;
+  overflow-y: hidden;
+  padding: 5px;
+
+  section {
+    padding: 10px 0px;
+    h1 {
+      color: $darkRed;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 1px $darkGold;
+      letter-spacing: 3px;
+    }
+  }
+
+  #aboutMe {
+    > img {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      box-shadow: $boxShadow;
+    }
+    > p {
+      text-align: justify;
+    }
+  }
+
+  #experience {
+    ul {
+      li {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 1.2rem;
+        border-bottom: $black solid 0.5px;
+        div {
+          display: flex;
+          align-items: center;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        div:first-child {
+          text-align: center;
+          justify-content: center;
+        }
+        div:last-child {
+          font-size: 1.5rem;
+          grid-column: 2/4;
+          padding-left: 10px;
+        }
+      }
+      li:last-child {
+        border: none;
+      }
+    }
+  }
+
+  #skills {
+    table {
+      margin: 0px auto;
+      th {
+        text-align: center;
+      }
+      tr {
+        td:first-child {
+          min-width: 130px;
+          i {
+            font-size: 1.3rem;
+            color: $darkRed;
+          }
+        }
+        td:last-child {
+          i.active {
+            color: $gold;
+          }
+          i {
+            // color: $darkGold;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+//************************************
+// FOOTER
+footer {
+  padding: 5px;
+}
+
+//************************************
+// DESKTOP
+@media (min-width: 680px) {
+  a {
+    -webkit-transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-property: color;
+    transition-duration: 0.3s;
+  }
+  a:hover {
+    color: $darkGold;
+    text-decoration: none;
+  }
+
+  header {
+    .desktop {
+      display: block;
+    }
+    .mobile {
+      display: none;
+    }
+    nav {
+      #hamburger {
+        display: none;
+      }
+    }
+  }
+
+  main {
+    #aboutMe {
+      > img:hover {
+        // content: url("../images/meSmileLess.jpg");
+        animation: blurMyPhoto 0.5s 1;
+      }
+      @keyframes blurMyPhoto {
+        from {
+          filter: blur(6px);
+        }
+        to {
+          filter: blur(0px);
+        }
+      }
+    }
+
+    #experience {
+      ul {
+        li {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          div:last-child {
+            grid-column: 2/3;
+          }
+        }
+      }
+    }
+
+    #skills {
+      table {
+        tr {
+          td:first-child {
+            -webkit-transition-property: padding;
+            -webkit-transition-duration: 0.3s;
+            transition-property: padding;
+            transition-duration: 0.3s;
+          }
+        }
+        tr:hover {
+          td:first-child {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//************************************
+// SCROLLBAR
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $backgroundColor;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $gold;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $darkGold;
+}

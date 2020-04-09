@@ -60,8 +60,8 @@
                 I found another adventage in Cyprus and I participated in internship
                 at DOREA Educational Institute within Erasmus as well, that lasted 2 months, where I took care of
                 website and got experience in using wordpress. Meanwhile, I
-                attended course about "Cyber Security". After I came back to Poland I was taking part in
-                front-end webcamp in IAI in Szczecin, where I gained professional approach with
+                attended course about <a class="textLink" data-src="images/prizes/declaration_of_obtained_competences.jpeg">"Cyber Security"</a>. After I came back to Poland I was taking part in
+                <a class="textLink" data-src="images/prizes/IAI_dyplom.jpeg">front-end webcamp</a> in IAI in Szczecin, where I gained professional approach with
                 creating websites.
                 Currently I am about to finish my dissertation and the aim is
                 to create secure website for managing dance school. Since I had started to learn how to create websites
@@ -108,6 +108,12 @@
     </main>
     <footer>
     </footer>
+    <div id="popupPhoto" class="popup">
+        <a class="cancel">
+            <i class="icon-cancel"></i>
+        </a>
+        <img src="images/prizes/IAI_dyplom.jpeg" alt="photo">
+    </div>
     <!-- JS -->
     <!-- jQuery -->
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->

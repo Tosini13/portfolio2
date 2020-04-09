@@ -44,3 +44,36 @@ function mobileMenu() {
     }
 }
 mobileMenu();
+
+
+function popup() {
+    let popups = document.querySelectorAll(".popup");
+
+    for (let popup of popups) {
+        let cancel = popup.querySelector(".cancel");
+        cancel.addEventListener("click", () => {
+            popup.classList.remove("openedPopup");
+        });
+    }
+
+    let textLinks = document.querySelectorAll("#aboutMe > p > .textLink");
+    let popupPhoto = document.getElementById("popupPhoto");
+    console.log(textLinks);
+    console.log(popupPhoto);
+
+    for (let textLink of textLinks) {
+        textLink.addEventListener("click", () => {
+            if (popupPhoto.classList.contains("openedPopup")) {
+                popupPhoto.classList.remove("openedPopup");
+            } else {
+                popupPhoto.classList.add("openedPopup");
+                popupPhoto.querySelector("img").src = textLink.dataset.src;
+                console.log(textLink.dataset.src);
+                console.log(popupPhoto.querySelector("img"));
+            }
+        });
+    }
+
+
+}
+popup();

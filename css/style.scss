@@ -67,6 +67,7 @@ header {
     align-items: center;
     width: 100%;
     height: 100%;
+    padding: 10px;
     .menu {
       display: flex;
       flex-direction: column;
@@ -78,6 +79,7 @@ header {
       height: calc(100%-60px);
       border-bottom-right-radius: 10px;
       > li {
+        border-bottom: $black solid 0.5px;
         > a {
           padding: 5px 10px;
         }
@@ -113,6 +115,9 @@ header {
           }
         }
       }
+      > li:last-child {
+        border-bottom: none;
+      }
       transform: translate(-150%, 0%);
       -webkit-transition-property: transform;
       -webkit-transition-duration: 0.5s;
@@ -125,17 +130,110 @@ header {
     }
     #hamburger {
       display: block;
-      border: none;
-      font-size: 1.5rem;
-      width: fit-content;
+      position: relative;
+      $height: 25px;
+      $width: 25px;
+      height: $height;
+      width: $width;
+      > div {
+        display: block;
+        position: absolute;
+        width: $width;
+        height: 4px;
+        left: 0;
+        border-radius: 10px;
+        background-color: $gold;
+        transform: translate(0%, 0%);
+
+        transition: background-color, box-shadow, transform;
+        transition-duration: 0.3s;
+      }
+      @for $i from 1 to 4 {
+        > div:nth-child(#{$i}) {
+          top: calc((#{$i} - 1) * (#{$height} / 3));
+        }
+      }
+
+      &.hamburgerX {
+        > div {
+          background-color: $darkRed;
+          box-shadow: 0px 0px 1px 1.5px $darkGold;
+        }
+        > div:nth-child(1) {
+          transform: translate(0%, #{$height / 3}) rotateZ(45deg);
+        }
+        > div:nth-child(3) {
+          transform: translate(0%, -#{$height / 3}) rotateZ(-45deg);
+        }
+        > div:nth-child(2) {
+          transform: translate(200%, 0%);
+        }
+      }
     }
-    .media {
+    #menuMedia {
+      display: flex;
+      flex-direction: column;
       width: fit-content;
-      padding: 10px;
+      #toggleMedia {
+        display: block;
+        position: relative;
+        $mediaToggleHeight: 4px;
+        $mediaToggleWidth: 20px;
+        height: $mediaToggleHeight;
+        width: $mediaToggleWidth;
+        margin: calc(#{$mediaToggleWidth / 2 + 5px}) auto;
+        > div {
+          display: block;
+          position: absolute;
+          width: $mediaToggleWidth;
+          height: $mediaToggleHeight;
+          border-radius: 10px;
+          background-color: $gold;
+
+          transition: background-color, box-shadow, transform;
+          transition-duration: 0.3s;
+        }
+        &.toggleMediaPlus {
+          > div {
+            background-color: $darkRed;
+            box-shadow: 0px 0px 1px 1.5px $darkGold;
+            transform: rotateZ(180deg);
+          }
+          > div:last-child {
+            transform: rotateZ(90deg);
+          }
+        }
+      }
       ul {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        max-height: 50vh;
+
+        -webkit-transition: max-height 0.5s;
+        transition: max-height 0.5s;
+        > li {
+          max-height: 50vh;
+          -webkit-transition: max-height 0.3s;
+          transition: max-height 0.3s;
+          > a {
+            max-height: 50vh;
+            font-size: 1.5rem;
+            -webkit-transition: max-height 0.3s, font-size 0.3s;
+            transition: max-height 0.3s, font-size 0.3s;
+          }
+        }
+      }
+      .mediaClosed {
+        max-height: 0px;
+        > li {
+          max-height: 0vh;
+          > a {
+            max-height: 0px;
+            font-size: 0px;
+          }
+        }
       }
     }
     a {

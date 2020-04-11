@@ -15,14 +15,23 @@
 <body id='myBody'>
     <header>
         <nav>
-            <div class="media">
+            <div id="menuMedia">
+                <a id="toggleMedia">
+                    <div></div>
+                    <div></div>
+                    <!-- <i class="icon-minus"></i> -->
+                </a>
                 <ul>
                     <li><a href="https://www.facebook.com/tosini13" target="_blank"><i class="icon-facebook"></a></i></li>
                     <li><a href="#insta" target="_blank"><i class="icon-instagram"></i></a></li>
                     <li><a href="https://github.com/Tosini13" target="_blank"><i class="icon-github-circled-alt2"></i></a></li>
                 </ul>
             </div>
-            <a id='hamburger' class="btn mobile"><i class="icon-menu"></i></a>
+            <a id='hamburger' class="mobile">
+                <div></div>
+                <div></div>
+                <div></div>
+            </a>
             <ul class="menu desktop">
                 <li>
                     <a>portfolio</a>

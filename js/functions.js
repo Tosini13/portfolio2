@@ -10,6 +10,7 @@ function photo() {
 
 // photo();
 
+
 function mobileMenu() {
     let hamburger = document.getElementById("hamburger");
     let menu = document.querySelector("header nav .menu");
@@ -22,13 +23,27 @@ function mobileMenu() {
         }
     }
 
-    hamburger.addEventListener("click", () => {
+    function menuToggle() {
         if (menu.classList.contains("opened")) {
             closeAllSubMenus();
             menu.classList.remove("opened");
         } else {
             menu.classList.add("opened");
         }
+    }
+
+    function hamburgerToggle() {
+        if (hamburger.classList.contains("hamburgerX")) {
+            closeAllSubMenus();
+            hamburger.classList.remove("hamburgerX");
+        } else {
+            hamburger.classList.add("hamburgerX");
+        }
+    }
+
+    hamburger.addEventListener("click", () => {
+        menuToggle();
+        hamburgerToggle();
     });
 
     for (let header of headers) {
@@ -77,3 +92,32 @@ function popup() {
 
 }
 popup();
+
+function toggleMedia() {
+    let dashboard = document.getElementById("menuMedia");
+    let btn = dashboard.querySelector("#toggleMedia");
+    let medias = dashboard.querySelector("ul");
+
+    function mediaToggle() {
+        if (medias.classList.contains("mediaClosed")) {
+            medias.classList.remove("mediaClosed");
+        } else {
+            medias.classList.add("mediaClosed");
+        }
+    }
+
+    function btnToggle() {
+        if (btn.classList.contains("toggleMediaPlus")) {
+            btn.classList.remove("toggleMediaPlus");
+        } else {
+            btn.classList.add("toggleMediaPlus");
+        }
+    }
+
+    btn.addEventListener("click", () => {
+        mediaToggle();
+        btnToggle();
+    });
+}
+
+toggleMedia();

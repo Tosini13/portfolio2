@@ -457,6 +457,7 @@ main #projects #showAllProjects {
   position: absolute;
   top: 16px;
   left: 10px;
+  cursor: pointer;
 }
 
 main #projects #showAllProjects > i {
@@ -611,6 +612,7 @@ main #projects #projectsSlick .slickArrowRight {
   position: absolute;
   top: 0px;
   z-index: 1;
+  cursor: pointer;
 }
 
 main #projects #projectsSlick .slickArrowLeft {
@@ -688,6 +690,10 @@ footer h1 {
   display: block;
 }
 
+.popup > .popupHeader > a {
+  cursor: pointer;
+}
+
 .popup img {
   max-width: 90vw;
   max-height: 85vh;
@@ -726,6 +732,7 @@ footer h1 {
 .popup.allProjects .mainPopup > ul > li > a {
   font-size: 30px;
   margin: 0px auto;
+  cursor: pointer;
 }
 
 .popup.allProjects .mainPopup > ul > li > div {
@@ -883,6 +890,16 @@ footer h1 {
     -ms-grid-column-span: 1;
     grid-column: 2/3;
   }
+  main #projects .slick-arrow,
+  main #projects a {
+    color: #9e7308;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+  }
+  main #projects .slick-arrow:hover,
+  main #projects a:hover {
+    color: goldenrod;
+  }
   main #skills table tr td:first-child {
     -webkit-transition-property: padding;
     -webkit-transition-duration: 0.3s;
@@ -891,6 +908,14 @@ footer h1 {
   }
   main #skills table tr:hover td:first-child {
     padding-left: 10px;
+  }
+  .popup.allProjects .mainPopup > ul > li > a {
+    color: #9e7308;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+  }
+  .popup.allProjects .mainPopup > ul > li > a:hover {
+    color: goldenrod;
   }
 }
 

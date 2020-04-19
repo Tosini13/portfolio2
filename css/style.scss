@@ -381,6 +381,7 @@ main {
       position: absolute;
       top: 16px;
       left: 10px;
+      cursor: pointer;
       > i {
         font-size: 2rem;
       }
@@ -487,6 +488,7 @@ main {
         position: absolute;
         top: 0px;
         z-index: 1;
+        cursor: pointer;
       }
       .slickArrowLeft {
         left: 0px;
@@ -547,6 +549,9 @@ footer {
     > p {
       display: block;
     }
+    > a {
+      cursor: pointer;
+    }
   }
   img {
     max-width: 90vw;
@@ -569,6 +574,7 @@ footer {
           > a {
             font-size: 30px;
             margin: 0px auto;
+            cursor: pointer;
           }
           > div {
             display: none;
@@ -717,6 +723,19 @@ footer {
       }
     }
 
+    #projects {
+      .slick-arrow,
+      a {
+        color: $darkGold;
+        -webkit-transition: color 0.3s;
+        transition: color 0.3s;
+      }
+      .slick-arrow:hover,
+      a:hover {
+        color: $gold;
+      }
+    }
+
     #skills {
       table {
         tr {
@@ -730,6 +749,22 @@ footer {
         tr:hover {
           td:first-child {
             padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  .popup.allProjects {
+    .mainPopup {
+      > ul {
+        > li {
+          > a {
+            color: $darkGold;
+            -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+          }
+          > a:hover {
+            color: $gold;
           }
         }
       }

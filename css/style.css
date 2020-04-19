@@ -3,6 +3,10 @@
   padding: 0px;
 }
 
+p {
+  margin: 0px;
+}
+
 ul {
   list-style: none;
   margin: 0px;
@@ -15,6 +19,10 @@ ul li {
 a {
   color: goldenrod;
   text-decoration: none;
+}
+
+a:active, a:focus {
+  outline: none;
 }
 
 a:hover {
@@ -39,9 +47,6 @@ body {
 }
 
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
   background-color: #0f1d26;
   top: 0;
@@ -51,6 +56,7 @@ header {
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
   border-bottom-left-radius: 10px;
+  z-index: 2;
 }
 
 header .desktop {
@@ -61,7 +67,7 @@ header .mobile {
   display: block;
 }
 
-header nav {
+header .menuDashboard {
   font-size: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -81,7 +87,65 @@ header nav {
   padding: 10px;
 }
 
-header nav .menu {
+header .menuDashboard #hamburger {
+  display: block;
+  position: relative;
+  height: 25px;
+  width: 25px;
+}
+
+header .menuDashboard #hamburger > div {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 4px;
+  left: 0;
+  border-radius: 10px;
+  background-color: goldenrod;
+  -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
+  -webkit-transition: background-color, -webkit-box-shadow, -webkit-transform;
+  transition: background-color, -webkit-box-shadow, -webkit-transform;
+  transition: background-color, box-shadow, transform;
+  transition: background-color, box-shadow, transform, -webkit-box-shadow, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+header .menuDashboard #hamburger > div:nth-child(1) {
+  top: calc((1 - 1) * (25px / 3));
+}
+
+header .menuDashboard #hamburger > div:nth-child(2) {
+  top: calc((2 - 1) * (25px / 3));
+}
+
+header .menuDashboard #hamburger > div:nth-child(3) {
+  top: calc((3 - 1) * (25px / 3));
+}
+
+header .menuDashboard #hamburger.hamburgerX > div {
+  background-color: darkred;
+  -webkit-box-shadow: 0px 0px 1px 1.5px #9e7308;
+          box-shadow: 0px 0px 1px 1.5px #9e7308;
+}
+
+header .menuDashboard #hamburger.hamburgerX > div:nth-child(1) {
+  -webkit-transform: translate(0%, 8.33333px) rotateZ(45deg);
+          transform: translate(0%, 8.33333px) rotateZ(45deg);
+}
+
+header .menuDashboard #hamburger.hamburgerX > div:nth-child(3) {
+  -webkit-transform: translate(0%, -8.33333px) rotateZ(-45deg);
+          transform: translate(0%, -8.33333px) rotateZ(-45deg);
+}
+
+header .menuDashboard #hamburger.hamburgerX > div:nth-child(2) {
+  -webkit-transform: translate(200%, 0%);
+          transform: translate(200%, 0%);
+}
+
+header .menuDashboard #menuMedia {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,6 +153,96 @@ header nav .menu {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 15px;
+}
+
+header .menuDashboard #menuMedia #toggleMedia {
+  display: block;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  margin: 0px auto;
+}
+
+header .menuDashboard #menuMedia #toggleMedia > div {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: goldenrod;
+  -webkit-transition: background-color, -webkit-box-shadow, -webkit-transform;
+  transition: background-color, -webkit-box-shadow, -webkit-transform;
+  transition: background-color, box-shadow, transform;
+  transition: background-color, box-shadow, transform, -webkit-box-shadow, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+header .menuDashboard #menuMedia #toggleMedia.toggleMediaPlus > div {
+  background-color: darkred;
+  -webkit-box-shadow: 0px 0px 1px 1.5px #9e7308;
+          box-shadow: 0px 0px 1px 1.5px #9e7308;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+
+header .menuDashboard #menuMedia #toggleMedia.toggleMediaPlus > div:last-child {
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}
+
+header .menuDashboard #menuMedia ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-height: 50vh;
+  -webkit-transition: max-height 0.5s;
+  transition: max-height 0.5s;
+}
+
+header .menuDashboard #menuMedia ul > li {
+  max-height: 50vh;
+  -webkit-transition: max-height 0.3s;
+  transition: max-height 0.3s;
+}
+
+header .menuDashboard #menuMedia ul > li > a {
+  max-height: 50vh;
+  font-size: 1.5rem;
+  -webkit-transition: max-height 0.3s, font-size 0.3s;
+  transition: max-height 0.3s, font-size 0.3s;
+}
+
+header .menuDashboard #menuMedia .mediaClosed {
+  max-height: 0px;
+}
+
+header .menuDashboard #menuMedia .mediaClosed > li {
+  max-height: 0vh;
+}
+
+header .menuDashboard #menuMedia .mediaClosed > li > a {
+  max-height: 0px;
+  font-size: 0px;
+}
+
+header .menuDashboard a {
+  display: block;
+}
+
+header nav {
   position: absolute;
   background: #0f1d26;
   right: 70px;
@@ -107,15 +261,25 @@ header nav .menu {
   transition-duration: 0.5s;
 }
 
-header nav .menu > li {
+header nav > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header nav > ul > li {
   border-bottom: rgba(0, 0, 0, 0.8) solid 0.5px;
 }
 
-header nav .menu > li > a {
+header nav > ul > li > a {
   padding: 5px 10px;
 }
 
-header nav .menu > li > ul {
+header nav > ul > li > ul {
   max-height: 0px;
   -webkit-transition-property: max-height;
   -webkit-transition-duration: 0.3s;
@@ -123,13 +287,13 @@ header nav .menu > li > ul {
   transition-duration: 0.3s;
 }
 
-header nav .menu > li > ul > li {
+header nav > ul > li > ul > li {
   max-height: 0px;
   -webkit-transition: max-height 0.3s;
   transition: max-height 0.3s;
 }
 
-header nav .menu > li > ul > li > a {
+header nav > ul > li > ul > li > a {
   max-height: 0px;
   font-size: 0px;
   -webkit-transition: max-height 0.3s, font-size 0.3s;
@@ -137,180 +301,26 @@ header nav .menu > li > ul > li > a {
   padding-left: 15px;
 }
 
-header nav .menu > li > ul.openedSub {
+header nav > ul > li > ul > li > a.disabled {
+  color: #9e7308;
+}
+
+header nav > ul > li > ul.openedSub {
   max-height: 90vh;
 }
 
-header nav .menu > li > ul.openedSub > li {
+header nav > ul > li > ul.openedSub > li {
   max-height: 90vh;
 }
 
-header nav .menu > li > ul.openedSub > li > a {
-  padding: 5px 10px;
+header nav > ul > li > ul.openedSub > li > a {
+  padding: 5px 15px;
   max-height: 90vh;
   font-size: 20px;
-  padding-left: 15px;
 }
 
-header nav .menu > li:last-child {
+header nav > ul > li:last-child {
   border-bottom: none;
-}
-
-header nav .opened {
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
-  -webkit-box-shadow: 0px 0px 10px black;
-          box-shadow: 0px 0px 10px black;
-}
-
-header nav #hamburger {
-  display: block;
-  position: relative;
-  height: 25px;
-  width: 25px;
-}
-
-header nav #hamburger > div {
-  display: block;
-  position: absolute;
-  width: 25px;
-  height: 4px;
-  left: 0;
-  border-radius: 10px;
-  background-color: goldenrod;
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
-  -webkit-transition: background-color, -webkit-box-shadow, -webkit-transform;
-  transition: background-color, -webkit-box-shadow, -webkit-transform;
-  transition: background-color, box-shadow, transform;
-  transition: background-color, box-shadow, transform, -webkit-box-shadow, -webkit-transform;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-}
-
-header nav #hamburger > div:nth-child(1) {
-  top: calc((1 - 1) * (25px / 3));
-}
-
-header nav #hamburger > div:nth-child(2) {
-  top: calc((2 - 1) * (25px / 3));
-}
-
-header nav #hamburger > div:nth-child(3) {
-  top: calc((3 - 1) * (25px / 3));
-}
-
-header nav #hamburger.hamburgerX > div {
-  background-color: darkred;
-  -webkit-box-shadow: 0px 0px 1px 1.5px #9e7308;
-          box-shadow: 0px 0px 1px 1.5px #9e7308;
-}
-
-header nav #hamburger.hamburgerX > div:nth-child(1) {
-  -webkit-transform: translate(0%, 8.33333px) rotateZ(45deg);
-          transform: translate(0%, 8.33333px) rotateZ(45deg);
-}
-
-header nav #hamburger.hamburgerX > div:nth-child(3) {
-  -webkit-transform: translate(0%, -8.33333px) rotateZ(-45deg);
-          transform: translate(0%, -8.33333px) rotateZ(-45deg);
-}
-
-header nav #hamburger.hamburgerX > div:nth-child(2) {
-  -webkit-transform: translate(200%, 0%);
-          transform: translate(200%, 0%);
-}
-
-header nav #menuMedia {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-header nav #menuMedia #toggleMedia {
-  display: block;
-  position: relative;
-  height: 4px;
-  width: 20px;
-  margin: calc(15px) auto;
-}
-
-header nav #menuMedia #toggleMedia > div {
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 4px;
-  border-radius: 10px;
-  background-color: goldenrod;
-  -webkit-transition: background-color, -webkit-box-shadow, -webkit-transform;
-  transition: background-color, -webkit-box-shadow, -webkit-transform;
-  transition: background-color, box-shadow, transform;
-  transition: background-color, box-shadow, transform, -webkit-box-shadow, -webkit-transform;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-}
-
-header nav #menuMedia #toggleMedia.toggleMediaPlus > div {
-  background-color: darkred;
-  -webkit-box-shadow: 0px 0px 1px 1.5px #9e7308;
-          box-shadow: 0px 0px 1px 1.5px #9e7308;
-  -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
-}
-
-header nav #menuMedia #toggleMedia.toggleMediaPlus > div:last-child {
-  -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
-}
-
-header nav #menuMedia ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  max-height: 50vh;
-  -webkit-transition: max-height 0.5s;
-  transition: max-height 0.5s;
-}
-
-header nav #menuMedia ul > li {
-  max-height: 50vh;
-  -webkit-transition: max-height 0.3s;
-  transition: max-height 0.3s;
-}
-
-header nav #menuMedia ul > li > a {
-  max-height: 50vh;
-  font-size: 1.5rem;
-  -webkit-transition: max-height 0.3s, font-size 0.3s;
-  transition: max-height 0.3s, font-size 0.3s;
-}
-
-header nav #menuMedia .mediaClosed {
-  max-height: 0px;
-}
-
-header nav #menuMedia .mediaClosed > li {
-  max-height: 0vh;
-}
-
-header nav #menuMedia .mediaClosed > li > a {
-  max-height: 0px;
-  font-size: 0px;
 }
 
 header nav a {
@@ -319,6 +329,13 @@ header nav a {
 
 header nav > ul {
   text-transform: uppercase;
+}
+
+header nav.opened {
+  -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
+  -webkit-box-shadow: 0px 0px 10px black;
+          box-shadow: 0px 0px 10px black;
 }
 
 main {
@@ -331,6 +348,9 @@ main {
 
 main section {
   padding: 10px 0px;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 main section h1 {
@@ -339,6 +359,8 @@ main section h1 {
   text-transform: uppercase;
   text-shadow: 1px 1px 1px #9e7308;
   letter-spacing: 3px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 main #aboutMe > img {
@@ -350,7 +372,10 @@ main #aboutMe > img {
 }
 
 main #aboutMe > p {
+  font-family: "Special Elite", "Times New Roman", Arial, Helvetica, sans-serif;
   text-align: justify;
+  letter-spacing: 0.5px;
+  font-size: 1.3rem;
 }
 
 main #aboutMe > p .textLink {
@@ -386,11 +411,13 @@ main #experience ul li div:first-child {
 }
 
 main #experience ul li div:last-child {
-  font-size: 1.5rem;
+  font-family: "Special Elite", "Times New Roman", Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2/4;
   padding-left: 10px;
+  text-align: center;
 }
 
 main #experience ul li:last-child {
@@ -422,22 +449,243 @@ main #skills table tr td:last-child i {
   color: black;
 }
 
+main #achievements > ul > li > i {
+  font-size: 1rem;
+}
+
+main #projects #showAllProjects {
+  position: absolute;
+  top: 16px;
+  left: 10px;
+}
+
+main #projects #showAllProjects > i {
+  font-size: 2rem;
+}
+
+main #projects #allProjects {
+  display: block;
+  position: absolute;
+}
+
+main #projects > ul > li > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+}
+
+main #projects > ul > li > a > i {
+  font-size: 1rem;
+}
+
+main #projects > ul > li > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-height: 0px;
+  -webkit-transform: translate(-150%, 0%);
+          transform: translate(-150%, 0%);
+  -webkit-transition: max-height 1s, transform 0.5s;
+  -webkit-transition: max-height 1s, -webkit-transform 0.5s;
+  transition: max-height 1s, -webkit-transform 0.5s;
+  transition: max-height 1s, transform 0.5s;
+  transition: max-height 1s, transform 0.5s, -webkit-transform 0.5s;
+}
+
+main #projects > ul > li > div > .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 1.3rem;
+}
+
+main #projects > ul > li > div > .desc {
+  margin-left: 5px;
+  padding-left: 5px;
+  border-left: #9e7308 dashed 1.5px;
+}
+
+main #projects > ul > li > div > .desc > p {
+  font-family: "Special Elite", "Times New Roman", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-align: justify;
+}
+
+main #projects > ul > li > .websiteOpened {
+  max-height: 100vh;
+  -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
+}
+
+main #projects #projectsSlick {
+  margin-top: 40px;
+}
+
+main #projects #projectsSlick .slick-list {
+  overflow: visible;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div {
+  position: relative;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > h3 {
+  text-align: center;
+  max-width: 80%;
+  margin: 0px auto;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > div {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50px;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  width: 100%;
+  padding: 5px;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > div > div > a {
+  display: block;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > div > div > a > i {
+  font-size: 2rem;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > div > p {
+  text-align: justify;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100%;
+  margin: 0px auto;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide:active, main #projects #projectsSlick .slick-list .projectSlide:focus {
+  outline: none;
+}
+
+main #projects #projectsSlick .slickArrowLeft,
+main #projects #projectsSlick .slickArrowRight {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+}
+
+main #projects #projectsSlick .slickArrowLeft {
+  left: 0px;
+}
+
+main #projects #projectsSlick .slickArrowRight {
+  right: 0px;
+}
+
+main #projects #projectsSlick .slick-dots {
+  top: -45px;
+  bottom: auto;
+}
+
+main #projects #projectsSlick .slick-dots li button:before {
+  color: #9e7308;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+  font-size: 8px;
+}
+
+main #projects #projectsSlick .slick-dots li.slick-active button:before {
+  color: goldenrod;
+}
+
 footer {
   padding: 5px;
 }
 
+footer h1 {
+  color: darkred;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px #9e7308;
+  letter-spacing: 3px;
+}
+
 .popup {
-  display: none;
-  z-index: 2;
+  display: block;
+  z-index: 3;
   position: fixed;
-  top: 50%;
+  bottom: 5px;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, 300%);
+          transform: translate(-50%, 300%);
   background-color: #0f1d26;
   -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
           box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
   padding: 10px;
+  border-radius: 10px;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+}
+
+.popup > .popupHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: goldenrod;
+  border-bottom: #9e7308 solid 1px;
+  margin-bottom: 5px;
+}
+
+.popup > .popupHeader > a,
+.popup > .popupHeader > p {
+  display: block;
 }
 
 .popup img {
@@ -445,14 +693,55 @@ footer {
   max-height: 85vh;
 }
 
-.popup .cancel {
-  float: right;
+.popup.allProjects {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  top: 50%;
+}
+
+.popup.allProjects .mainPopup > ul {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.popup.allProjects .mainPopup > ul > li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup.allProjects .mainPopup > ul > li > a {
+  font-size: 30px;
+  margin: 0px auto;
+}
+
+.popup.allProjects .mainPopup > ul > li > div {
+  display: none;
 }
 
 .openedPopup {
-  display: block;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   max-width: 100vw;
   max-height: 100vh;
+}
+
+.openedPopup.allProjects {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 @media (min-width: 680px) {
@@ -472,8 +761,92 @@ footer {
   header .mobile {
     display: none;
   }
-  header nav #hamburger {
+  header .menuDashboard #hamburger {
     display: none;
+  }
+  header .menuDashboard #menuMedia #toggleMedia {
+    cursor: pointer;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+  header .menuDashboard #menuMedia #toggleMedia:hover {
+    opacity: 0.7;
+  }
+  header nav.menu {
+    position: fixed;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    left: 0;
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+    border-radius: 0px;
+    -webkit-box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.8);
+  }
+  header nav.menu a {
+    cursor: pointer;
+  }
+  header nav.menu > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  header nav.menu > ul > li {
+    position: relative;
+    border: none;
+  }
+  header nav.menu > ul > li > ul {
+    position: absolute;
+    border: #9e7308 solid 2px;
+    min-width: 100%;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    background-color: #9e7308;
+    color: #0f1d26;
+    -webkit-transition: transform 0.3s;
+    -webkit-transition: max-height 0.7s, -webkit-transform 0.3s;
+    transition: max-height 0.7s, -webkit-transform 0.3s;
+    transition: transform 0.3s, max-height 0.7s;
+    transition: transform 0.3s, max-height 0.7s, -webkit-transform 0.3s;
+  }
+  header nav.menu > ul > li > ul > li > a:hover {
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+  }
+  header nav.menu > ul > li > ul > li > a:hover {
+    color: goldenrod;
+  }
+  header nav.menu > ul > li > ul > li > a.disabled {
+    color: #0f1d26;
+    opacity: 0.5;
+  }
+  header nav.menu > ul > li > a:after {
+    content: "";
+    position: absolute;
+    background-color: #0f1d26;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 8px;
+    -webkit-transform: translate(0px, 100%);
+            transform: translate(0px, 100%);
+  }
+  header nav.menu > ul > li > ul.openedSub {
+    -webkit-transform: translate(0px, 8px);
+            transform: translate(0px, 8px);
+  }
+  header nav.menu > ul > li:last-child > ul {
+    right: 0px;
+  }
+  header nav.opened {
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
   main #aboutMe > img:hover {
     -webkit-animation: blurMyPhoto 0.5s 1;

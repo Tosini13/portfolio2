@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'montserrat';
-  src: url('../font/montserrat.eot?66487341');
-  src: url('../font/montserrat.eot?66487341#iefix') format('embedded-opentype'),
-       url('../font/montserrat.woff2?66487341') format('woff2'),
-       url('../font/montserrat.woff?66487341') format('woff'),
-       url('../font/montserrat.ttf?66487341') format('truetype'),
-       url('../font/montserrat.svg?66487341#montserrat') format('svg');
+  src: url('../font/montserrat.eot?51342905');
+  src: url('../font/montserrat.eot?51342905#iefix') format('embedded-opentype'),
+       url('../font/montserrat.woff2?51342905') format('woff2'),
+       url('../font/montserrat.woff?51342905') format('woff'),
+       url('../font/montserrat.ttf?51342905') format('truetype'),
+       url('../font/montserrat.svg?51342905#montserrat') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'montserrat';
-    src: url('../font/montserrat.svg?66487341#montserrat') format('svg');
+    src: url('../font/montserrat.svg?51342905#montserrat') format('svg');
   }
 }
 */
@@ -75,6 +75,7 @@
 .icon-trash:before { content: '\e811'; } /* '' */
 .icon-trash-empty:before { content: '\e812'; } /* '' */
 .icon-ok-circled2:before { content: '\e813'; } /* '' */
+.icon-globe:before { content: '\e814'; } /* '' */
 .icon-login:before { content: '\f02c'; } /* '' */
 .icon-github-circled-alt2:before { content: '\f056'; } /* '' */
 .icon-ellipsis-vert:before { content: '\f142'; } /* '' */

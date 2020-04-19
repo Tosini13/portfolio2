@@ -18,29 +18,69 @@ class Skill {
 
 }
 
+class Project {
+
+    setDescription(desc) {
+        this.desc = desc;
+    }
+
+    setGitHub(gitHub) {
+        this.gitHub = gitHub;
+    }
+
+    constructor(...datas) { //name, url, desc, git
+        this.name = datas[0];
+        this.url = datas[1];
+        this.desc = datas[2];
+        this.gitHub = datas[3];
+    }
+
+}
+
 class Me {
     constructor() {
         this.skills = [];
+        this.projects = [];
+    }
+
+    showAllProjectsPopup() {
+        let popup = document.getElementById("myPopup");
+        document.getElementById("showAllProjects").addEventListener("click", () => {
+            popup.classList.add("openedPopup");
+            popup.classList.add("allProjects");
+            popup.querySelector(".popupTitle").innerHTML = "My all projects";
+            projectInitReact(this.projects);
+        });
+    }
+
+    update() {
+        this.showAllProjectsPopup();
     }
 
     initSkills() {
         initSkillsReact(this.skills);
     }
+
+    initProjects() {
+        this.initProjectSlider();
+    }
+
+    initProjectSlider() {
+        for (let project of this.projects) {
+            $('#projectsSlick').slick('slickAdd',
+                '<div class="projectSlide"><div>' +
+                '<h3>' + project.name + '</h3>' +
+                '<div><div>' +
+                '<a href=' + project.gitHub + ' target="_blank">' +
+                '<i class="icon-github-circled-alt2"></i></a>' +
+                '<a href=' + project.url + ' target="_blank">' +
+                '<i class="icon-globe"></i></a>' +
+                '</div>' +
+                '<p>' + project.desc + '</p>' +
+                '</div>' +
+                '</div></div>');
+        }
+    }
 }
 
 var me = new Me();
-me.skills.push(new Skill("HTML 5", 5));
-me.skills.push(new Skill("CSS 3", 5));
-me.skills.push(new Skill("SASS", 5));
-me.skills.push(new Skill("LESS", 4));
-me.skills.push(new Skill("JavaScript", 5));
-me.skills.push(new Skill("jQuery", 4));
-me.skills.push(new Skill("Bootstrap", 3));
-me.skills.push(new Skill("React.js", 3));
-me.skills.push(new Skill("PHP", 4));
-me.skills.push(new Skill("MySQL", 4));
-me.skills.push(new Skill("Java", 3));
-me.skills.push(new Skill("C++", 2));
-
-
-me.initSkills();

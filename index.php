@@ -8,137 +8,108 @@
     <!-- CSS -->
     <link href='bootstrap/css/bootstrap.css' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <link href='fontello/css/montserrat.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 </head>
 
 <body id='myBody'>
-    <header>
-        <nav>
-            <div id="menuMedia">
-                <a id="toggleMedia">
-                    <div></div>
-                    <div></div>
-                    <!-- <i class="icon-minus"></i> -->
-                </a>
-                <ul>
-                    <li><a href="https://www.facebook.com/tosini13" target="_blank"><i class="icon-facebook"></a></i></li>
-                    <li><a href="#insta" target="_blank"><i class="icon-instagram"></i></a></li>
-                    <li><a href="https://github.com/Tosini13" target="_blank"><i class="icon-github-circled-alt2"></i></a></li>
-                </ul>
-            </div>
-            <a id='hamburger' class="mobile">
-                <div></div>
-                <div></div>
-                <div></div>
-            </a>
-            <ul class="menu desktop">
-                <li>
-                    <a>portfolio</a>
-                    <ul>
-                        <li><a href='#' class="current">intro</a></li>
-                        <li><a href='#'>skills</a></li>
-                        <li><a href='#'>experience</a></li>
-                        <li><a href='#'>prizes</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a>about me</a>
-                    <ul>
-                        <li><a href='#'>my story</a></li>
-                        <li><a href='#'>hobbies</a></li>
-                        <li><a href='#'>plans</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <?php require "html/header.html" ?>
     <main>
-        <section id="aboutMe">
-            <h1>About Me</h1>
-            <img src="images/meLess.jpg" alt="My photo" id="myPhoto">
-            <p>
-                My name is Jakub Bartosik. I was born on 20th of July 1997 in Szczecin, Poland.
-                My hobby from an early age is football. I was playing in SL Salos Szczecin
-                and MKS Pogon Szczecin for 14 years. In 2016 I started study
-                Computer Science in West Pomeranian University of Technology in Szczecin.
-                After two years of studying I decided to take part in "Erasmus+" student exchange programme and go to
-                Cyprus, where in PA Collage I was studying for one year.
-                This oportunity allowed my develop a lot of
-                skills (among others level of English and programming).
-                I found another adventage in Cyprus and I participated in internship
-                at DOREA Educational Institute within Erasmus as well, that lasted 2 months, where I took care of
-                website and got experience in using wordpress. Meanwhile, I
-                attended course about <a class="textLink" data-src="images/prizes/declaration_of_obtained_competences.jpeg">"Cyber Security"</a>. After I came back to Poland I was taking part in
-                <a class="textLink" data-src="images/prizes/IAI_dyplom.jpeg">front-end webcamp</a> in IAI in Szczecin, where I gained professional approach with
-                creating websites.
-                Currently I am about to finish my dissertation and the aim is
-                to create secure website for managing dance school. Since I had started to learn how to create websites
-                I had a few projects that results you can check in projects section.
-            </p>
-        </section>
-        <section id="experience">
-            <h1>experience</h1>
-            <ul>
-                <li>
-                    <div>2004-2012</div>
-                    <div>Playing football in SL Salos Szczecin</div>
-                </li>
-                <li>
-                    <div>2012-2018</div>
-                    <div>Playing football in MKS Pogon Szczecin</div>
-                </li>
-                <li>
-                    <div>10.2016 - still</div>
-                    <div>Studying computer science in ZUT, Szczecin</div>
-                </li>
-                <li>
-                    <div>10.2018 - 06.2019</div>
-                    <div>Studying computer science in PA Collage, Larnaca</div>
-                </li>
-                <li>
-                    <div>06.2018 - 07.2019</div>
-                    <div>Internship in DOREA, Limassol</div>
-                </li>
-                <li>
-                    <div>03.2020</div>
-                    <div>webcamp in IAI, Szczecin</div>
-                </li>
-            </ul>
-        </section>
-        <section id="skills">
-            <h1>skills</h1>
-            <table>
-            </table>
-        </section>
-        <section id="prizes">
-            <a href='#' data-popup-src='images/prizes/certificate_of_participation.jpeg'>Cyber Security Education for Online Safety</a>
-        </section>
+        <?php require "html/main.html" ?>
     </main>
-    <footer>
-    </footer>
+    <?php require "html/footer.html" ?>
     <div id="popupPhoto" class="popup">
-        <a class="cancel">
-            <i class="icon-cancel"></i>
-        </a>
+        <div class="popupHeader">
+            <p class="popupTitle"></p>
+            <a class="cancel">
+                <i class="icon-cancel"></i>
+            </a>
+        </div>
         <img src="images/prizes/IAI_dyplom.jpeg" alt="photo">
     </div>
-    <!-- JS -->
+    <div id="myPopup" class="popup">
+        <div class="popupHeader">
+            <p class="popupTitle"></p>
+            <a class="cancel">
+                <i class="icon-cancel"></i>
+            </a>
+        </div>
+        <div class="mainPopup">
+        </div>
+    </div>
     <!-- jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
-    <!-- BOOTSTRAP -->
-    <!-- <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
-    <!-- JavaScript -->
-    <!-- Load React. -->
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <!-- My -->
-    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src='bootstrap/js/bootstrap.js' type='text/javascript'></script> -->
-    <!-- <script src='js/skills.js' type='text/babel'></script> -->
-    <script src='js/newSkills.js' type='text/javascript'></script>
+    <!-- SLIDER -->
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#projectsSlick").slick({
+                prevArrow: '<i class="icon-left-open slickArrowLeft"></i>',
+                nextArrow: '<i class="icon-right-open slickArrowRight"></i>',
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 3000,
+                dots: true,
+                arrows: true,
+                centerMode: false,
+                responsive: [{
+                    breakpoint: 980,
+                    settings: {
+                        dots: true,
+                        arrows: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                }, {
+                    breakpoint: 650,
+                    settings: {
+                        dots: true,
+                        arrows: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                }]
+            });
+
+
+            me.skills.push(new Skill("HTML 5", 5));
+            me.skills.push(new Skill("CSS 3", 5));
+            me.skills.push(new Skill("SASS", 5));
+            me.skills.push(new Skill("LESS", 4));
+            me.skills.push(new Skill("JavaScript", 5));
+            me.skills.push(new Skill("jQuery", 4));
+            me.skills.push(new Skill("Bootstrap", 3));
+            me.skills.push(new Skill("React.js", 3));
+            me.skills.push(new Skill("PHP", 4));
+            me.skills.push(new Skill("MySQL", 4));
+            me.skills.push(new Skill("Java", 3));
+            me.skills.push(new Skill("C++", 2));
+
+
+            me.initSkills();
+
+            me.projects.push(new Project("Bachelor's Dissertation", "https://poland13jakubartosik.000webhostapp.com", "Aim of my dissertation project was to create school management safety web application. In order to develop the website I used AJAX, React.js, PHP, MySQL and of course HTML5, CSS3.", "https://github.com/Tosini13/dissertationProject"));
+            me.projects.push(new Project("Mesh Coach", "http://oczkotrenera.pl", "Information page for 'Oczko Trenera'. I am doing webiste for tournament managing within this project as well."));
+            me.projects.push(new Project("My previous porfolio", "https://myauxiliary.000webhostapp.com/", "My previous portfolio made in July 2019. One of my first webpages"));
+            me.update();
+
+            me.initProjects();
+
+        });
+    </script>
+    <!-- React -->
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <!-- <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script> -->
+
+    <!-- <script src='js/skillsBabel.js' type='text/babel'></script> -->
+    <script src='js/skillsReact.js' type='text/javascript'></script>
+    <!-- <script src='js/projectsBabel.js' type='text/babel'></script> -->
+    <script src='js/projectsReact.js' type='text/javascript'></script>
     <script src='js/classes.js' type='text/javascript'></script>
     <script src='js/functions.js' type='text/javascript'></script>
 </body>

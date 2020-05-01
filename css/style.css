@@ -44,6 +44,8 @@ body {
   padding: 0px;
   color: goldenrod;
   font-size: 1.5rem;
+  overflow-x: hidden;
+  position: relative;
 }
 
 header {
@@ -376,11 +378,17 @@ main #aboutMe > p {
   text-align: justify;
   letter-spacing: 0.5px;
   font-size: 1.3rem;
+  background-color: #0f1d26;
+  -webkit-box-shadow: 0px 0px 10px #0f1d26;
+          box-shadow: 0px 0px 10px #0f1d26;
+  -webkit-box-shadow: 0px 0px 10px 7px #0f1d26;
+          box-shadow: 0px 0px 10px 7px #0f1d26;
 }
 
 main #aboutMe > p .textLink {
   color: #9e7308;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 main #experience ul li {
@@ -424,29 +432,96 @@ main #experience ul li:last-child {
   border: none;
 }
 
-main #skills table {
-  margin: 0px auto;
+main #skills > div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
 }
 
-main #skills table th {
+main #skills > div table {
+  position: relative;
+  margin: 0px auto 30px auto;
+  width: 100%;
+}
+
+main #skills > div table th {
   text-align: center;
 }
 
-main #skills table tr td:first-child {
-  min-width: 130px;
+main #skills > div table tr td:first-child {
+  position: relative;
+  min-width: 100px;
 }
 
-main #skills table tr td:first-child i {
+main #skills > div table tr td:first-child i {
   font-size: 1.3rem;
   color: darkred;
 }
 
-main #skills table tr td:last-child i.active {
-  color: goldenrod;
+main #skills > div table tr .skillLevel {
+  text-align: right;
 }
 
-main #skills table tr td:last-child i {
+main #skills > div table tr .skillLevel i.active {
+  color: #9e7308;
+}
+
+main #skills > div table tr .skillLevel i {
   color: black;
+}
+
+main #skills > div table tr > .description {
+  display: none;
+  position: absolute;
+  width: 165px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  background-color: #0f1d26;
+  color: goldenrod;
+  padding: 5px;
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -webkit-box-shadow: 3px 2px 15px rgba(0, 0, 0, 0.8);
+          box-shadow: 3px 2px 15px rgba(0, 0, 0, 0.8);
+}
+
+main #skills > div table tr > .description::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 10px;
+  -webkit-transform: translate(-90%, 0%);
+          transform: translate(-90%, 0%);
+  background-color: #0f1d26;
+}
+
+main #skills > div table tr.skillDescriptionOpened td:first-child::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border: transparent solid 8px;
+  border-right: goldenrod solid 8px;
+}
+
+main #skills > div .otherSkills tr .skillLevel {
+  min-width: 170px;
+}
+
+main #skills > div .otherSkills tr .skillLevel i {
+  color: #9e7308;
+  font-size: 20px;
+}
+
+main #skills > div .otherSkills tr.skillDescriptionOpened .skillLevel i {
+  color: goldenrod;
 }
 
 main #achievements > ul > li > i {
@@ -563,44 +638,120 @@ main #projects #projectsSlick .slick-list .projectSlide > div > h3 {
   margin: 0px auto;
 }
 
-main #projects #projectsSlick .slick-list .projectSlide > div > div {
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent {
   position: absolute;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   left: 50%;
   top: 50px;
   -webkit-transform: translate(-50%, 0%);
           transform: translate(-50%, 0%);
   width: 100%;
   padding: 5px;
+  max-width: 700px;
 }
 
-main #projects #projectsSlick .slick-list .projectSlide > div > div > div {
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > img {
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div {
+  z-index: -1;
+  margin-top: 5px;
+  top: 0px;
+  left: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  max-width: 100%;
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div > div {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  top: 50px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
-main #projects #projectsSlick .slick-list .projectSlide > div > div > div > a {
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div > div > a {
   display: block;
 }
 
-main #projects #projectsSlick .slick-list .projectSlide > div > div > div > a > i {
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div > div > a > i {
   font-size: 2rem;
 }
 
-main #projects #projectsSlick .slick-list .projectSlide > div > div > p {
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div > p {
   text-align: justify;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   max-width: 100%;
   margin: 0px auto;
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent.projectContentOpened > img {
+  -webkit-filter: blur(3px) brightness(50%);
+          filter: blur(3px) brightness(50%);
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent.projectContentOpened > div {
+  z-index: 1;
+  opacity: 1;
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent.projectContentOpened > div > div {
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+}
+
+main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent.projectContentOpened > div > p {
+  -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
 }
 
 main #projects #projectsSlick .slick-list .projectSlide:active, main #projects #projectsSlick .slick-list .projectSlide:focus {
@@ -641,14 +792,34 @@ main #projects #projectsSlick .slick-dots li.slick-active button:before {
 
 footer {
   padding: 5px;
+  margin-bottom: 30px;
 }
 
-footer h1 {
+footer .contact > h1 {
   color: darkred;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px #9e7308;
   letter-spacing: 3px;
+}
+
+footer .contact > ul > li {
+  text-align: center;
+}
+
+footer .attributes {
+  font-size: 10px;
+}
+
+footer .attributes > ul {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0px auto;
+}
+
+footer .attributes > ul > li {
+  text-align: center;
 }
 
 .popup {
@@ -749,6 +920,340 @@ footer h1 {
 .openedPopup.allProjects {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.backgroundIcon {
+  width: 50px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  opacity: 0.1;
+  position: absolute;
+  left: 20%;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  z-index: -1;
+}
+
+.backgroundIcon:nth-child(30n + 1) {
+  top: 32%;
+  -webkit-transform: rotate(457deg);
+          transform: rotate(457deg);
+  -webkit-animation: backgroundIconMove 2s infinite;
+          animation: backgroundIconMove 2s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 2) {
+  top: 86%;
+  -webkit-transform: rotate(400deg);
+          transform: rotate(400deg);
+  -webkit-animation: backgroundIconMove 2s infinite;
+          animation: backgroundIconMove 2s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 3) {
+  top: 79%;
+  -webkit-transform: rotate(677deg);
+          transform: rotate(677deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 4) {
+  top: 45%;
+  -webkit-transform: rotate(499deg);
+          transform: rotate(499deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 5) {
+  top: 14%;
+  -webkit-transform: rotate(542deg);
+          transform: rotate(542deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 6) {
+  top: 53%;
+  -webkit-transform: rotate(455deg);
+          transform: rotate(455deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 7) {
+  top: 52%;
+  -webkit-transform: rotate(446deg);
+          transform: rotate(446deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 8) {
+  top: 24%;
+  -webkit-transform: rotate(575deg);
+          transform: rotate(575deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 9) {
+  top: 72%;
+  -webkit-transform: rotate(634deg);
+          transform: rotate(634deg);
+  -webkit-animation: backgroundIconMove 4s infinite;
+          animation: backgroundIconMove 4s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 10) {
+  top: 67%;
+  -webkit-transform: rotate(452deg);
+          transform: rotate(452deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 11) {
+  top: 51%;
+  -webkit-transform: rotate(622deg);
+          transform: rotate(622deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 12) {
+  top: 61%;
+  -webkit-transform: rotate(452deg);
+          transform: rotate(452deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 13) {
+  top: 68%;
+  -webkit-transform: rotate(612deg);
+          transform: rotate(612deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 14) {
+  top: 13%;
+  -webkit-transform: rotate(706deg);
+          transform: rotate(706deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 15) {
+  top: 3%;
+  -webkit-transform: rotate(701deg);
+          transform: rotate(701deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 16) {
+  top: 37%;
+  -webkit-transform: rotate(444deg);
+          transform: rotate(444deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 17) {
+  top: 20%;
+  -webkit-transform: rotate(603deg);
+          transform: rotate(603deg);
+  -webkit-animation: backgroundIconMove 4s infinite;
+          animation: backgroundIconMove 4s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 18) {
+  top: 15%;
+  -webkit-transform: rotate(519deg);
+          transform: rotate(519deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 19) {
+  top: 85%;
+  -webkit-transform: rotate(477deg);
+          transform: rotate(477deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 20) {
+  top: 88%;
+  -webkit-transform: rotate(561deg);
+          transform: rotate(561deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 21) {
+  top: 32%;
+  -webkit-transform: rotate(519deg);
+          transform: rotate(519deg);
+  -webkit-animation: backgroundIconMove 6s infinite;
+          animation: backgroundIconMove 6s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 22) {
+  top: 55%;
+  -webkit-transform: rotate(381deg);
+          transform: rotate(381deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 23) {
+  top: 70%;
+  -webkit-transform: rotate(567deg);
+          transform: rotate(567deg);
+  -webkit-animation: backgroundIconMove 2s infinite;
+          animation: backgroundIconMove 2s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 24) {
+  top: 31%;
+  -webkit-transform: rotate(400deg);
+          transform: rotate(400deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 25) {
+  top: 22%;
+  -webkit-transform: rotate(371deg);
+          transform: rotate(371deg);
+  -webkit-animation: backgroundIconMove 4s infinite;
+          animation: backgroundIconMove 4s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 26) {
+  top: 41%;
+  -webkit-transform: rotate(545deg);
+          transform: rotate(545deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 27) {
+  top: 21%;
+  -webkit-transform: rotate(410deg);
+          transform: rotate(410deg);
+  -webkit-animation: backgroundIconMove 4s infinite;
+          animation: backgroundIconMove 4s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 28) {
+  top: 15%;
+  -webkit-transform: rotate(462deg);
+          transform: rotate(462deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 29) {
+  top: 66%;
+  -webkit-transform: rotate(595deg);
+          transform: rotate(595deg);
+  -webkit-animation: backgroundIconMove 3s infinite;
+          animation: backgroundIconMove 3s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.backgroundIcon:nth-child(30n + 30) {
+  top: 87%;
+  -webkit-transform: rotate(651deg);
+          transform: rotate(651deg);
+  -webkit-animation: backgroundIconMove 5s infinite;
+          animation: backgroundIconMove 5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes backgroundIconMove {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes backgroundIconMove {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
 }
 
 @media (min-width: 680px) {
@@ -890,24 +1395,54 @@ footer h1 {
     -ms-grid-column-span: 1;
     grid-column: 2/3;
   }
-  main #projects .slick-arrow,
-  main #projects a {
+  main #projects #projectsSlick .slick-arrow,
+  main #projects #projectsSlick a {
     color: #9e7308;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
   }
-  main #projects .slick-arrow:hover,
-  main #projects a:hover {
+  main #projects #projectsSlick .slick-arrow:hover,
+  main #projects #projectsSlick a:hover {
     color: goldenrod;
   }
-  main #skills table tr td:first-child {
+  main #projects #projectsSlick .slick-list .projectSlide > div > .projectContent > div > p {
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    -webkit-transform: translate(0%, 50%);
+            transform: translate(0%, 50%);
+    width: 98%;
+  }
+  main #projects #projectsSlick .slick-list .projectSlide > div.projectContentOpened > div > div {
+    -webkit-transform: translate(50%, 0%);
+            transform: translate(50%, 0%);
+  }
+  main #projects #projectsSlick .slick-list .projectSlide > div.projectContentOpened > div > p {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+  main #skills > div {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  main #skills > div table {
+    width: auto;
+  }
+  main #skills > div table tr td:first-child {
+    min-width: 150px;
     -webkit-transition-property: padding;
     -webkit-transition-duration: 0.3s;
     transition-property: padding;
     transition-duration: 0.3s;
   }
-  main #skills table tr:hover td:first-child {
+  main #skills > div table tr:hover td:first-child {
     padding-left: 10px;
+  }
+  main #skills > div table tr:hover .skillLevel i.active {
+    color: goldenrod;
+  }
+  main #skills > div .otherSkills tr td:first-child {
+    min-width: 200px;
   }
   .popup.allProjects .mainPopup > ul > li > a {
     color: #9e7308;

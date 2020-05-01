@@ -16,6 +16,14 @@ function photo() {
 
 // photo();
 
+// function skillsDescription() {
+//     let skills = document.querySelectorAll("#skills table td");
+//     for(let skill of skills){
+//         console.log(skill);
+//     }
+//     console.log(skills);
+// }
+// skillsDescription();
 
 function mobileMenu() {
     let hamburger = document.getElementById("hamburger");
@@ -174,24 +182,26 @@ function toggleMedia() {
 toggleMedia();
 
 function toggleProjects() {
-    let projects = document.getElementById("projects");
-    let btns = projects.querySelectorAll(".project");
-    let descs = projects.querySelectorAll(".desc");
+    let projects = document.getElementById("projectsSlick");
+    let btns = projects.querySelectorAll(".projectContent");
+    console.log(btns);
 
     function closeAllDescs() {
         for (let btn of btns) {
-            btn.nextSibling.classList.remove("websiteOpened");
+            btn.classList.remove("projectContentOpened");
         }
     }
 
     for (let btn of btns) {
-        btn.addEventListener("click", () => {
-            let desc = btn.nextSibling;
-            if (desc.classList.contains("websiteOpened")) {
-                desc.classList.remove("websiteOpened");
+        let photo = btn.querySelector("img");
+        console.log(photo);
+        photo.addEventListener("click", () => {
+            // let desc = btn.nextSibling;
+            if (btn.classList.contains("projectContentOpened")) {
+                btn.classList.remove("projectContentOpened");
             } else {
                 closeAllDescs();
-                desc.classList.add("websiteOpened");
+                btn.classList.add("projectContentOpened");
             }
         });
     }
@@ -200,6 +210,13 @@ function toggleProjects() {
 
 toggleProjects();
 
+function updatePage() {
+    document.getElementById("updatePage").addEventListener("click", () => {
+        window.location.reload(true);
+    });
+}
+
+updatePage();
 
 //MENU
 

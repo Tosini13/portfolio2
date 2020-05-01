@@ -12,12 +12,6 @@ class ProjectReact extends React.Component {
         return (
             <li>
                 <a className="project" onClick={this.moveToSlide}>{this.props.project.name}</a>
-                <div>
-                    <div className="links">
-                        <a href={this.props.project.gitHub} target="_blank"><i className="icon-github-circled-alt2"></i></a>
-                        <a href={this.props.project.url} target="_blank"><i className="icon-globe"></i></a>
-                    </div>
-                </div>
             </li>
         );
     }

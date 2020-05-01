@@ -1,14 +1,14 @@
 
-class SkillLevelReact extends React.Component {
+class OtherSkillLevelReact extends React.Component {
     constructor(props) {
         super(props);
-        this.nums = [1, 2, 3, 4, 5];
+        this.nums = [1, 2, 3, 4, 5, 6]
     }
     render() {
         this.skillLevel = this.nums.map((num) => {
-            let starClass = "icon-ok-circled2";
+            let starClass = "icon-star-empty";
             if (num <= this.props.level) {
-                starClass += " active";
+                starClass = "icon-star";
             }
             return (
                 <i className={starClass}></i>
@@ -23,7 +23,7 @@ class SkillLevelReact extends React.Component {
     }
 }
 
-class SkillReact extends React.Component {
+class OtherSkillReact extends React.Component {
     constructor(props) {
         super(props);
         this.showDescription = this.showDescription.bind(this);
@@ -59,7 +59,7 @@ class SkillReact extends React.Component {
             <tr className={desc} onMouseOver={this.showDescription} onMouseLeave={this.hideDescription} onClick={this.showDescription} onClick={this.toggleDescription}>
                 <td>{this.props.skill.title}
                 </td>
-                <SkillLevelReact level={this.props.skill.level} />
+                <OtherSkillLevelReact level={this.props.skill.level} />
                 <td className="description">
                     <p>
                         {this.props.skill.title} - {this.props.skill.level}
@@ -71,14 +71,14 @@ class SkillReact extends React.Component {
 
 }
 
-class SkillsReact extends React.Component {
+class OtherSkillsReact extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         this.skills = this.props.skills.map((skill) =>
-            <SkillReact skill={skill} />
+            <OtherSkillReact skill={skill} />
         );
         return (
             <tbody>
@@ -90,9 +90,10 @@ class SkillsReact extends React.Component {
 
 // ========================================
 
-function initSkillsReact(skills) {
+function initOtherSkillsReact(skills) {
+    console.log(document.querySelectorAll('#skills table')[1]);
     ReactDOM.render(
-        <SkillsReact skills={skills} />,
-        document.querySelector('#skills table')
+        <OtherSkillsReact skills={skills} />,
+        document.querySelectorAll('#skills table')[1]
     );
 }

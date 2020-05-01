@@ -12,19 +12,7 @@ class ProjectReact extends React.Component {
     return /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
       className: "project",
       onClick: this.moveToSlide
-    }, this.props.project.name), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: "links"
-    }, /*#__PURE__*/React.createElement("a", {
-      href: this.props.project.gitHub,
-      target: "_blank"
-    }, /*#__PURE__*/React.createElement("i", {
-      className: "icon-github-circled-alt2"
-    })), /*#__PURE__*/React.createElement("a", {
-      href: this.props.project.url,
-      target: "_blank"
-    }, /*#__PURE__*/React.createElement("i", {
-      className: "icon-globe"
-    })))));
+    }, this.props.project.name));
   }
 
 }

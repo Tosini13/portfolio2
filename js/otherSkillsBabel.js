@@ -43,7 +43,9 @@ class OtherSkillReact extends React.Component {
     }
 
     showDescription() {
-        this.setState({ desc: 1 });
+        if (screen.width > 800) {
+            this.setState({ desc: 1 });
+        }
     }
 
     hideDescription() {

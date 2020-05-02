@@ -193,8 +193,7 @@ function toggleProjects() {
     }
 
     for (let btn of btns) {
-        let photo = btn.querySelector("img");
-        console.log(photo);
+        let photo = btn.querySelector(".projectImg");
         photo.addEventListener("click", () => {
             // let desc = btn.nextSibling;
             if (btn.classList.contains("projectContentOpened")) {
@@ -204,6 +203,16 @@ function toggleProjects() {
                 btn.classList.add("projectContentOpened");
             }
         });
+        if (screen.width > 980) {
+            btn.addEventListener("mouseover", () => {
+                closeAllDescs();
+                btn.classList.add("projectContentOpened");
+            });
+            btn.addEventListener("mouseleave", () => {
+                closeAllDescs();
+                btn.classList.remove("projectContentOpened");
+            });
+        }
     }
 
 }

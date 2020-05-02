@@ -28,12 +28,13 @@ class Project {
         this.gitHub = gitHub;
     }
 
-    constructor(...datas) { //name, photo, url, desc, git
+    constructor(...datas) { //name, best, photo, url, desc, git
         this.name = datas[0];
-        this.url = datas[1];
+        this.best = datas[1]; //true/false
         this.photo = datas[2];
-        this.desc = datas[3];
-        this.gitHub = datas[4];
+        this.url = datas[3];
+        this.desc = datas[4];
+        this.gitHub = datas[5];
     }
 
 }
@@ -99,21 +100,24 @@ class Me {
 
     initProjectSlider() {
         for (let project of this.projects) {
-            console.log(project);
             let agit = "";
             let aurl = "";
+            let bestClass = "";
             if (project.gitHub !== undefined) {
                 agit = '<a href=' + project.gitHub + ' target="_blank"><i class="icon-github-circled-alt2"></i></a>';
             }
             if (project.url !== undefined) {
                 aurl = '<a href=' + project.url + ' target="_blank"><i class="icon-globe"></i></a>';
             }
+            if (project.best) {
+                bestClass = " bestProject";
+            }
             $('#projectsSlick').slick('slickAdd',
                 '<div class="projectSlide"><div>' +
                 '<h3>' + project.name + '</h3>' +
                 '<div class="projectContent">' +
-                '<img src="images/websites/' + project.photo + '" alt= ' + project.name + '>' +
-                '<div>' +
+                '<div class="projectImg' + bestClass + '"><img src="images/websites/' + project.photo + '" alt= ' + project.name + '></div>' +
+                '<div class="projectDescription">' +
                 '<div>' +
                 aurl +
                 agit +
